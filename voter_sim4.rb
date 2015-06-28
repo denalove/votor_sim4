@@ -95,14 +95,14 @@ end
 def update_politician
 		puts "Which politician would you like to update: "
 		puts "#{@politicians}"
-		@pick_politician = gets.chomp.downcase
+		pick_politician = gets.chomp.downcase
 		puts "what would you like to change? Name or Party"
 		old_name = gets.chomp.downcase
 		puts "What would you like the name to be? "
 		new_politician_name = gets.chomp.downcase
 
 		@politicians.map! { |name| 
-			if (name == @pick_politician) ; new_politician_name
+			if (name == "#{pick_politician}") ; new_politician_name
 			else
 				name
 			end
