@@ -96,24 +96,50 @@ def update_politician
 		puts "Which politician would you like to update: "
 		puts "#{@politicians}"
 		pick_politician = gets.chomp.downcase
-		puts "what would you like to change? Name or Party"
-		old_name = gets.chomp.downcase
+		# puts "what would you like to change? Name or Party"
+		# old_name = gets.chomp.downcase
 		puts "What would you like the name to be? "
-		new_politician_name = gets.chomp.downcase
+		new_p_name = gets.chomp.downcase
 
-		@politicians.map! { |name| 
-			if (name == "#{pick_politician}") ; new_politician_name
-			else
-				name
+		@politicians.each { |pol| 
+			if (pol.name == pick_politician) 
+				pol.name = new_p_name
 			end
 		}
 
 		final_decision
 end
-# def add_voter(voter)
-# 		@voters << voter
-# 		final_decision
-# end
+
+def update_voter
+		puts "Which voter would you like to update: "
+		puts "#{@voters}"
+		pick_voters = gets.chomp.downcase
+		puts "what would you like to change? Name or Party"
+		name_or_party = gets.chomp.downcase
+
+		case name_or_party
+		when "name"
+			puts "What would you like the name to be? "
+			new_v_name = gets.chomp.downcase
+
+			@voters.each { |vot| 
+				if (vot.name == pick_voters) 
+					vot.name = new_v_name
+				end
+			}
+		when "party"
+			puts "What would you like the party to be? "
+			new_v_party = gets.chomp.downcase
+			@voters.each { |vot| 
+				if (vot.party == pick_voters) 
+					vot.party = new_v_party
+				end
+			}
+		end
+
+		final_decision
+end
+
 
 # class TestVoterSim < Minitest::Test
 
@@ -170,7 +196,7 @@ def voter_sim
 	elsif @answer1 == "update"
 		update
 		if @update == "voters"
-			update_voters
+			update_voter
 		elsif @update == "politicians"
 			update_politician
 		end
