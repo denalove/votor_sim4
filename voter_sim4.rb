@@ -101,22 +101,6 @@ def update_politician
 		puts "What would you like the name to be? "
 		new_p_name = gets.chomp.downcase
 
-		@politicians.each { |pol| 
-			if (pol.name == pick_politician) 
-				pol.name = new_p_name
-			end
-		}
-
-		final_decision
-end
-
-def update_voter
-		puts "Which voter would you like to update: "
-		puts "#{@voters}"
-		pick_voters = gets.chomp.downcase
-		puts "what would you like to change? Name or Party"
-		name_or_party = gets.chomp.downcase
-
 		case name_or_party
 		when "name"
 			puts "What would you like the name to be? "
@@ -131,8 +115,39 @@ def update_voter
 			puts "What would you like the party to be? "
 			new_v_party = gets.chomp.downcase
 			@voters.each { |vot| 
-				if (vot.party == pick_voters) 
+				if (vot.name == pick_voters) 
 					vot.party = new_v_party
+				end
+			}
+		end
+		
+
+		final_decision
+end
+
+def update_voter
+		puts "Which voter would you like to update: "
+		puts "#{@voters}"
+		pick_voters = gets.chomp.downcase
+		puts "what would you like to change? Name or Politics"
+		name_or_party = gets.chomp.downcase
+
+		case name_or_politics
+		when "name"
+			puts "What would you like the name to be? "
+			new_v_name = gets.chomp.downcase
+
+			@voters.each { |vot| 
+				if (vot.name == pick_voters) 
+					vot.name = new_v_name
+				end
+			}
+		when "politics"
+			puts "What would you like the party to be? "
+			new_v_politics = gets.chomp.downcase
+			@voters.each { |vot| 
+				if (vot.name == pick_voters) 
+					vot.politics = new_v_politics
 				end
 			}
 		end
